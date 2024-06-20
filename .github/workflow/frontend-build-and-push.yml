@@ -1,0 +1,38 @@
+name: Frontend Build and Push
+
+on:
+  branches:
+    - frontend/develop
+  paths:
+    - 'nba-stats-comparison-frontend/**'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+    - name: Extract Git tag
+      id: extract_tag
+      run: |
+        TAG=$(git describe --tags --abbrev=0)
+        echo "::set-output name=TAG::${TAG}"
+      
+    - name: Build and Push
+      uses: docker/build-push-action@v2
+      with:
+        context: ./nba-stats-comparison-frontend
+        file: ./nba-stats-comparison-frontend/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nba-stats-comparison-frontend:${{ steps.extract_tag.outputs.TAG }}
