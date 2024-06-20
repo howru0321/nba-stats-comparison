@@ -1,0 +1,7 @@
+version: '3'
+services:
+  nba-stats-comparison-frontend:
+    build: ./nba-stats-comparison-frontend
+    image: nba-stats-comparison-frontend
+    ports:
+     - "3000:80"
