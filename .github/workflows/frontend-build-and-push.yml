@@ -23,12 +23,6 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-
-    - name: Extract Git tag
-      id: extract_tag
-      run: |
-        TAG=$(git describe --tags --abbrev=0)
-        echo "::set-output name=TAG::${TAG}"
       
     - name: Build and Push
       uses: docker/build-push-action@v2
@@ -36,4 +30,4 @@ jobs:
         context: ./nba-stats-comparison-frontend
         file: ./nba-stats-comparison-frontend/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nba-stats-comparison-frontend:${{ steps.extract_tag.outputs.TAG }}
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nba-stats-comparison-frontend:${{ github.ref_name }}
