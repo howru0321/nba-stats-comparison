@@ -58,6 +58,55 @@ function App() {
     },
   };
 
+  type Players = {
+    player1 : Player
+    player2 : Player
+  }
+
+  function ComparisonList(props : Players){
+    return (
+      <table>
+        <tbody>
+          <tr>
+            <td className="player-name">{props.player1.name}</td>
+            <td></td>
+            <td className="player-name">{props.player2.name}</td>
+          </tr>
+          <tr>
+            <td>{props.player1.stats.PTS}</td>
+            <td>PTS</td>
+            <td>{props.player2.stats.PTS}</td>
+          </tr>
+          <tr>
+            <td>{props.player1.stats.REBS}</td>
+            <td>REBS</td>
+            <td>{props.player2.stats.REBS}</td>
+          </tr>
+          <tr>
+            <td>{props.player1.stats.ASTS}</td>
+            <td>ASTS</td>
+            <td>{props.player2.stats.ASTS}</td>
+          </tr>
+          <tr>
+            <td>{props.player1.stats.FG}</td>
+            <td>FG%</td>
+            <td>{props.player2.stats.FG}</td>
+          </tr>
+          <tr>
+            <td>{props.player1.stats.ThreeFG}</td>
+            <td>3FG%</td>
+            <td>{props.player2.stats.ThreeFG}</td>
+          </tr>
+          <tr>
+            <td>{props.player1.stats.FT}</td>
+            <td>FT%</td>
+            <td>{props.player2.stats.FT}</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const [selectedGameType, setSelectedGameType] = useState(gameTypes[0]);
 
@@ -85,45 +134,10 @@ function App() {
           <div className="player-name">{player2.name}</div>
         </div>
       </header>
-      <table>
-        <tbody>
-          <tr>
-            <td className="player-name">{player1.name}</td>
-            <td></td>
-            <td className="player-name">{player2.name}</td>
-          </tr>
-          <tr>
-            <td>{player1.stats.PTS}</td>
-            <td>PTS</td>
-            <td>{player2.stats.PTS}</td>
-          </tr>
-          <tr>
-            <td>{player1.stats.REBS}</td>
-            <td>REBS</td>
-            <td>{player2.stats.REBS}</td>
-          </tr>
-          <tr>
-            <td>{player1.stats.ASTS}</td>
-            <td>ASTS</td>
-            <td>{player2.stats.ASTS}</td>
-          </tr>
-          <tr>
-            <td>{player1.stats.FG}</td>
-            <td>FG%</td>
-            <td>{player2.stats.FG}</td>
-          </tr>
-          <tr>
-            <td>{player1.stats.ThreeFG}</td>
-            <td>3FG%</td>
-            <td>{player2.stats.ThreeFG}</td>
-          </tr>
-          <tr>
-            <td>{player1.stats.FT}</td>
-            <td>FT%</td>
-            <td>{player2.stats.FT}</td>
-          </tr>
-        </tbody>
-      </table>
+      <ComparisonList
+        player1={player1}
+        player2={player2}
+      />
     </div>
   );
 }
