@@ -1,10 +1,11 @@
 name: Frontend Build and Push
 
 on:
-  branches:
-    - frontend/develop
-  paths:
-    - 'nba-stats-comparison-frontend/**'
+  push:
+    branches:
+      - frontend/develop
+    paths:
+      - 'nba-stats-comparison-frontend/**'
 
 jobs:
   build-and-push:
