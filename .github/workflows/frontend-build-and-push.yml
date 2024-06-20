@@ -30,4 +30,4 @@ jobs:
         context: ./nba-stats-comparison-frontend
         file: ./nba-stats-comparison-frontend/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nba-stats-comparison-frontend:${{ github.ref_name }}
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nba-stats-comparison-frontend:${{ github.sha }}
