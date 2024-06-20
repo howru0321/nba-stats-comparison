@@ -49,7 +49,7 @@ function App() {
   const player2: Player = {
     name: "Stephen Curry",
     stats: {
-      PTS: 26.0,
+      PTS: 26.1,
       REBS: 6.3,
       ASTS: 6.8,
       FG: 49.7,
