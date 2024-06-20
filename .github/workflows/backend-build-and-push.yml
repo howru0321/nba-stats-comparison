@@ -1,0 +1,14 @@
+name: Backend Build and Push
+
+on:
+  push:
+    branches:
+      - backend/develop
+    paths:
+      - 'nba-stats-comparison-backend/**'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:

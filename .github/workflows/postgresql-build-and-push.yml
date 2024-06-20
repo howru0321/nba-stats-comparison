@@ -1,0 +1,14 @@
+name: Postgresql Build and Push
+
+on:
+  push:
+    branches:
+      - postgresql/develop
+    paths:
+      - 'nba-stats-comparison-postgresql/**'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
